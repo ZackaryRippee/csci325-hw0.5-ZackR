@@ -10,4 +10,4 @@ probOneFive.o: probOneFive.cpp
 	$(CC) $(CFLAGS) -c probOneFive.cpp
 
 clean:
-	$(RM) probOneFive *.0 *~
+	$(RM) probOneFive *.o *~
