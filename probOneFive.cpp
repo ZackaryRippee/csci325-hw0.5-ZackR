@@ -5,35 +5,39 @@ using namespace std;
 int MAX_ARRAY = 1000;
 
 
-void  printNumbers(string filename,int average, int array[]);
+int  printNumbers(string filename, int array[]);
 
-float arrayAvg(int array[]);
+float arrayAvg(int array[], int total);
 
 
 int main(){
   int numbers[MAX_ARRAY];
   string filename;
-  int average = 0;
   ifstream data;
   cout << "file for array: ";
   cin >> filename;
   cout << endl;
-  printNumbers(filename, average, numbers);
+  int total = printNumbers(filename, numbers);
+  cout << endl << "Average of the array is " << arrayAvg(numbers , total) << endl;
 }
 
-void printNumbers(string filename,int average, int array[]){
+int printNumbers(string filename, int array[]){
   int i = 0;
   ifstream data(filename);
-  while (data){
-    data >> array[i];
+  while (data >> array[i]){
     cout << array[i] << endl;
     i++;
   }
   data.close();
-  average = i;
+  return i;
   
 }
 
-float arrayAvg(int array[]){
-  
+float arrayAvg(int array[], int total){
+  float average;
+  for (int i = 0; i < total; i++){
+    average = average + array[i];
+  }
+  average = average / total;
+  return average;
 }
